@@ -54,49 +54,17 @@ update movies set genreId=22 where id=1
 
 Now that we know how to make foreign keys and change data let's do some practice queries.  The simplest way to use a foreign key is via a join statement. 
 
-Let's join the artist and album tables so we can list the artist name next to each album name.
-
-```
-select a.title, ar.Name from album a join artist ar on a.ArtistId=ar.ArtistId
-```
+Join the artist and album tables so we can list the artist name next to each album name.
 
 ## Use a nested query/sub-select
 
 The next way to use a primary key is with a nested query/sub-select statement.  By using parenthesis we can do a select inside of a select.  This is really effective when you have a foreign key link between two tables because now we can filter our main query by criteria on a referenced table.
-
-```
-select * from Track where GenreId in (select GenreId from Genre where Name='Jazz' OR Name='Blues')
-```
 
 We just got all data from Track where the track was pointing to a record in the genre table that happend to be either Jazz or Blues.
 
 The subquery `(select GenreId from Genre where Name='Jazz' OR Name='Blues')` returns an array of GenreId.
 
 Our parent query then checks for Tracks where the Track Genre is in that array `where GenreId in `
-
-## Set a value to null
-
-Sometimes we want to remove values.  Try this then select on the Employee table and look at the first Employee
-
-```
-update Employee set Phone=null where EmployeeId=1
-```
-
-## Query a null value
-
-Sometimes you want to know when there is no value.  What if wanted to know all customers that purchased for themselves and not a company.   
-
-If you try this what do you see?
-
-```
-select * from customer where company = null
-```
-
-This, this works: 
-
-```
-select * from customer where company is null
-```
 
 
 ## Group by
@@ -109,7 +77,7 @@ Select all artist ids, artist names, and a count of how many albums they have.
 select ar.artistId, ar.name, count(*) from artist ar join album a on ar.ArtistId=a.ArtistId group by ar.artistId
 ```
 
-#### challenge
+#### Challenge
 Order this by album count, largest first
 
 ## Use Distinct
