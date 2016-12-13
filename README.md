@@ -40,7 +40,7 @@ Query your movie table and see that the same row is now returned with an extra c
 Don't leave **GenreId** null so add a value using an `UPDATE` statement. Use the `WHERE` clause to avoid overwriting all of the records:
 
 ```
-UPDATE Movie SET GenreId = 22 WHERE id = 1;
+UPDATE Movie SET GenreId = 22 WHERE MovieId = 1;
 ```
 
 ## Begin Challenges
