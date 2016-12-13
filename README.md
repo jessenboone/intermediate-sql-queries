@@ -1,36 +1,29 @@
 # intermediate-sql-queries
 
-For today we will be practicing inserting and querying data using SQL.
+Use [Chinook](http://jxs.me/chinook-web/) to complete today's mini-project. You will use the schema provided.
 
-Here is a website that will let us write queries to interact with some data.  [http://jxs.me/chinook-web/](http://jxs.me/chinook-web/)
+## Setup
 
-On the left are the Tables with their fields.  The right is where we will be writing our queries.  The bottom is where we will see our results.  
+### Add foreign key to new table
 
-## Add foreign key to new table
-
-When creating tables we can specify a column as having a foreign key.
-
-The datatype of our column must match the datatype of the column we are linking to (Usually a primary key which is usually an integer).
-
-Create a new table called movies with an id, title and mediaTypeId.
-Make mediaTypeId a foreign key to the MediaType table on the MediaTypeId column. 
+Create a new table called Movie with a MovieId, Title and MediaTypeId:
 
 ```
-CREATE TABLE movies (
-    id INTEGER PRIMARY KEY,
-    title TEXT,
-  	mediaTypeId INTEGER, 
-    FOREIGN KEY(mediaTypeId) REFERENCES MediaType(MediaTypeId)
+CREATE TABLE Movie (
+  MovieId INTEGER PRIMARY KEY,
+  Title TEXT,
+  MediaTypeId INTEGER, 
+  FOREIGN KEY(MediaTypeId) REFERENCES MediaType(MediaTypeId)
 );
 ```
 
-Test this by adding a movie with a title and a mediaTypeId.
+Test the table by adding a Movie with a Title and a MediaTypeId.
 
 ```
-insert into movies (title, mediaTypeId) values ("Aladdin", 3)
+insert into Movie (Title, MediaTypeId) values ("Aladdin", 3);
 ```
 
-Now query the movies table using a simple select statement and you should see your movie.
+Now query the table with a `select` statement and you should see your movie.
 
 ## Add foreign key to existing table
 
